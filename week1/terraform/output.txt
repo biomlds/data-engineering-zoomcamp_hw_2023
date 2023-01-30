@@ -1,0 +1,6 @@
+> google_bigquery_dataset.dataset: Creating...
+> google_storage_bucket.data-lake-bucket: Creating...
+> google_bigquery_dataset.dataset: Creation complete after 3s [id=projects/hip-watch-375918/datasets/trips_data_all]
+> google_storage_bucket.data-lake-bucket: Creation complete after 3s [id=dtc_data_lake_hip-watch-375918]
+> 
+> Apply complete! Resources: 2 added, 0 changed, 0 destroyed.
