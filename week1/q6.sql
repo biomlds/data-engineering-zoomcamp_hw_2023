@@ -1,0 +1,9 @@
+SELECT ZDO."Zone",
+	MAX(T."tip_amount") AS MAXTIP
+FROM GREEN_TAXI_DATA T
+JOIN ZONES ZPU ON T."PULocationID" = ZPU."LocationID"
+JOIN ZONES ZDO ON T."DOLocationID" = ZDO."LocationID"
+WHERE ZPU."Zone" = 'Astoria'
+GROUP BY ZDO."Zone"
+ORDER BY MAXTIP DESC
+LIMIT 1;

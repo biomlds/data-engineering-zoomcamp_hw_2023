@@ -1,0 +1,1 @@
+pip list  --format=freeze  | wc -l
