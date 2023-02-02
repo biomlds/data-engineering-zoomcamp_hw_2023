@@ -22,7 +22,7 @@ def clean(df: pd.DataFrame, color: Literal['yellow', 'green']) -> pd.DataFrame:
     """Fix dtype issues"""
     if color == "yellow":
         prefix = 't'
-    elif color == "green":
+    if color == "green":
         prefix = 'l'
 
     df[f"{prefix}pep_pickup_datetime"] = pd.to_datetime(df[f"{prefix}pep_pickup_datetime"])
