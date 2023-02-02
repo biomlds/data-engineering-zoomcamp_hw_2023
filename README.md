@@ -10,3 +10,7 @@ Homeworks for [Data Engineering Zoomcamp](https://github.com/DataTalksClub/data-
 * [FAQ](https://docs.google.com/document/d/19bnYs80DwuUimHM65UV3sylsCn2j1vziPOwzBwQrebw/edit?usp=sharing)
 * Leaderboard
 * [Course Playlist: Only 2023 Live videos & homeworks](https://www.youtube.com/playlist?list=PL3MmuxUbc_hJjEePXIdE-LVUx_1ZZjYGW)
+
+----
+
+[Week 1](week1)
