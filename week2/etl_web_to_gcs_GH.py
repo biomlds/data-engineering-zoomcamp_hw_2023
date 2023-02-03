@@ -8,7 +8,7 @@ deploy = Deployment.build_from_flow(
     flow=etl_web_to_gcs,
     name="etl_web_to_gcs_GH2",
     storage=github_block,
-    entrypoint="week2/etl_web_to_gcs.py:etl_web_to_gcs"
+    entrypoint="/week2/etl_web_to_gcs.py:etl_web_to_gcs"
 )
 
 if __name__ == "__main__":

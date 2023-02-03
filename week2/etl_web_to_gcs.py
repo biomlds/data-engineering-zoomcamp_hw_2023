@@ -1,5 +1,4 @@
 from pathlib import Path
-from random import randint
 from typing import Literal
 
 import pandas as pd
@@ -10,8 +9,6 @@ from prefect_gcp.cloud_storage import GcsBucket
 @task(retries=3)
 def fetch(dataset_url: str) -> pd.DataFrame:
     """Read taxi data from web into pandas DataFrame"""
-    # if randint(0, 1) > 0:
-    #     raise Exception
 
     df = pd.read_csv(dataset_url)
     return df
@@ -59,12 +56,10 @@ def etl_web_to_gcs(
     dataset_url = f"https://github.com/DataTalksClub/nyc-tlc-data/releases/download/{color}/{dataset_file}.csv.gz"
 
     df = fetch(dataset_url)
-    df_clean = clean(df, color = "yellow")
+    df_clean = clean(df, color)
     path = write_local(df_clean, color, dataset_file)
     write_gcs(path)
 
 
 if __name__ == "__main__":
-    # etl_web_to_gcs(color = "green", year = 2020, month = 1)
-    etl_web_to_gcs(color = "yellow", year = 2019, month = 3)
-    # etl_web_to_gcs(color = "yellow", year = 2019, month = 2)
+    etl_web_to_gcs()
