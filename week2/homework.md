@@ -65,7 +65,7 @@ How many rows were processed by the script?
 - 88,605
 - 190,225
 
-
+> 88605
 
 ## Question 5. Email or Slack notifications
 
