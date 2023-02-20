@@ -1,18 +1,3 @@
-# version: 2
-
-# sources:
-#     - name: staging
-#       databse: hip-watch-375918
-#       schema: dez_ny_taxi
-
-#       tables:
-#         - name: green
-#         - name: yellow
-
-
-
-
-
 version: 2
 
 sources:
