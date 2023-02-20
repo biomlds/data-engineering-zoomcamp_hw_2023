@@ -1,4 +1,4 @@
-#source: https://github.com/boisalai/de-zoomcamp-2023/blob/main/week4.md
+# source: https://github.com/boisalai/de-zoomcamp-2023/blob/main/week4.md
 
 from pathlib import Path
 from typing import Literal
@@ -11,13 +11,12 @@ from random import randint
 @task(retries=3, log_prints=True)
 def fetch(dataset_url: str) -> pd.DataFrame:
     print(dataset_url)
-    df = pd.read_csv(dataset_url, compression='gzip')
+    df = pd.read_csv(dataset_url, compression="gzip")
     return df
 
 
 @task(log_prints=True)
 def clean(color: str, df: pd.DataFrame) -> pd.DataFrame:
-
     if color == "yellow":
         """Fix dtype issues"""
         df["tpep_pickup_datetime"] = pd.to_datetime(df["tpep_pickup_datetime"])
@@ -27,29 +26,31 @@ def clean(color: str, df: pd.DataFrame) -> pd.DataFrame:
         """Fix dtype issues"""
         df["lpep_pickup_datetime"] = pd.to_datetime(df["lpep_pickup_datetime"])
         df["lpep_dropoff_datetime"] = pd.to_datetime(df["lpep_dropoff_datetime"])
-        df["trip_type"] = df["trip_type"].astype('Int64')
+        df["trip_type"] = df["trip_type"].astype("Int64")
 
     if color == "yellow" or color == "green":
-        df["VendorID"] = df["VendorID"].astype('Int64')
-        df["RatecodeID"] = df["RatecodeID"].astype('Int64')
-        df["PULocationID"] = df["PULocationID"].astype('Int64')
-        df["DOLocationID"] = df["DOLocationID"].astype('Int64')
-        df["passenger_count"] = df["passenger_count"].astype('Int64')
-        df["payment_type"] = df["payment_type"].astype('Int64')
+        df["VendorID"] = df["VendorID"].astype("Int64")
+        df["RatecodeID"] = df["RatecodeID"].astype("Int64")
+        df["PULocationID"] = df["PULocationID"].astype("Int64")
+        df["DOLocationID"] = df["DOLocationID"].astype("Int64")
+        df["passenger_count"] = df["passenger_count"].astype("Int64")
+        df["payment_type"] = df["payment_type"].astype("Int64")
 
     if color == "fhv":
         """Rename columns"""
-        df.rename({'dropoff_datetime':'dropOff_datetime'}, axis='columns', inplace=True)
-        df.rename({'PULocationID':'PUlocationID'}, axis='columns', inplace=True)
-        df.rename({'DOLocationID':'DOlocationID'}, axis='columns', inplace=True)
+        df.rename(
+            {"dropoff_datetime": "dropOff_datetime"}, axis="columns", inplace=True
+        )
+        df.rename({"PULocationID": "PUlocationID"}, axis="columns", inplace=True)
+        df.rename({"DOLocationID": "DOlocationID"}, axis="columns", inplace=True)
 
         """Fix dtype issues"""
         df["pickup_datetime"] = pd.to_datetime(df["pickup_datetime"])
         df["dropOff_datetime"] = pd.to_datetime(df["dropOff_datetime"])
 
         # See https://pandas.pydata.org/docs/user_guide/integer_na.html
-        df["PUlocationID"] = df["PUlocationID"].astype('Int64')
-        df["DOlocationID"] = df["DOlocationID"].astype('Int64')
+        df["PUlocationID"] = df["PUlocationID"].astype("Int64")
+        df["DOlocationID"] = df["DOlocationID"].astype("Int64")
 
     print(df.head(2))
     print(f"columns: {df.dtypes}")
@@ -80,8 +81,9 @@ def write_gcs(path: Path) -> None:
 
 
 @flow()
-def web_to_gcs(color: Literal["fhv", "green", "yellow"], year: Literal[2019, 2020]) -> None:
-
+def web_to_gcs(
+    color: Literal["fhv", "green", "yellow"], year: Literal[2019, 2020]
+) -> None:
     # color = "fhv"
     # color = "green"
     # color = "yellow"
