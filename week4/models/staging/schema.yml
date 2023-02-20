@@ -1,19 +1,22 @@
 # version: 2
 
 # sources:
-#   - name: staging
-#     databse: hip-watch-375918
-#     schema: dez_ny_taxi
+#     - name: staging
+#       databse: hip-watch-375918
+#       schema: dez_ny_taxi
 
-#     tables:
-#       - name: green
-#       - name: yellow
+#       tables:
+#         - name: green
+#         - name: yellow
 
-# version: 2
+
+
+
+
+version: 2
 
 sources:
     - name: staging
-      # database: taxi-rides-ny-339813
       database: hip-watch-375918
       schema: dez_ny_taxi
 
