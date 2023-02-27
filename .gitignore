@@ -136,3 +136,4 @@ dmypy.json
 *.parquet
 *.json
 */data/*
+*/spark_data/*
